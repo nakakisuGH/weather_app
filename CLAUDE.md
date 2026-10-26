@@ -2,7 +2,10 @@
 
 ## Project
 Flutter weather app built as a technical challenge.
-Uses the AccuWeather API (city search + 5-day daily forecast) and follows a provided Figma design.
+Uses the AccuWeather API (city search and current conditions) and follows a provided Figma design.
+
+## Product decisions
+See the "Technical decisions and assumptions" section in README.md. Follow them strictly.
 
 ## Architecture (Clean Architecture, feature-first)
 - `lib/features/weather/domain/`: entities, repository contracts (abstract
@@ -25,6 +28,12 @@ Uses the AccuWeather API (city search + 5-day daily forecast) and follows a prov
   timeout, no connection, 400, 401 (invalid API key), 404, 500.
 - Use `ListView.builder` for dynamic lists.
 - Use `const` constructors whenever possible.
+- Responsive layouts: no hardcoded screen sizes; use `LayoutBuilder`,
+  `MediaQuery`, `Expanded`/`Flexible`.
+- Typography with google_fonts. Colors and text styles live in a shared
+  theme (`lib/core/theme/`), never inline magic values in widgets.
+- Images/illustrations not yet available use Material icons as placeholders,
+  isolated in a single widget so they can be replaced later.
 - Follow Effective Dart: snake_case files, UpperCamelCase classes, lowerCamelCase members.
 - One public class per file. Single Responsibility Principle.
 - The API key is never hardcoded. Read it with
