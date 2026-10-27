@@ -24,7 +24,7 @@ See the "Technical decisions and assumptions" section in README.md. Follow them 
 
 ## Code rules
 - Strict null safety: never use `!` on API data. Use `?.`, `??` and default values.
-- Network errors are caught in the datasource and mapped to domain `Failure`s:
+- Network errors are caught in the datasource and mapped to `AppError`s:
   timeout, no connection, 400, 401 (invalid API key), 404, 500.
 - Use `ListView.builder` for dynamic lists.
 - Use `const` constructors whenever possible.
