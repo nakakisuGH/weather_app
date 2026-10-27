@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 /// A city suggestion returned by the location search API.
-
 class City extends Equatable {
   final String key;
   final String name;
