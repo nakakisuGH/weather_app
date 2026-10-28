@@ -47,7 +47,7 @@ lib/
 Widget → BLoC → Use case → Repository (contract) → Repository implementation → Remote datasource (Dio) → AccuWeather API
 ```
 
-Network exceptions are caught in the datasource layer and mapped to domain `Failure`s, which the BLoC turns into user-friendly error states.
+Network exceptions are caught in the datasource layer and mapped to `AppError`s, which the BLoC turns into user-friendly error states.
 
 ---
 
