@@ -129,6 +129,7 @@ flutter analyze
 - **Independent card loading:** each city card fetches its own weather, so an error in one city does not affect the others and can be retried individually.
 - **Bottom navigation:** only the Locations tab is functional; Home and Profile show a simple placeholder, since the design does not define those screens.
 - **Null safety:** API fields are parsed defensively with `?.`, `??` and default values. The `!` operator is never used on API data.
+- **No retrying in search** In the city search, retrying is done by editing or clearing the text, to follow the Figma design (no Retry button).
 
 ---
 
