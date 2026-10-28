@@ -30,8 +30,7 @@ See the "Technical decisions and assumptions" section in README.md. Follow them 
 - Use `const` constructors whenever possible.
 - Responsive layouts: no hardcoded screen sizes; use `LayoutBuilder`,
   `MediaQuery`, `Expanded`/`Flexible`.
-- Typography with google_fonts. Colors and text styles live in a shared
-  theme (`lib/core/theme/`), never inline magic values in widgets.
+- Typography: Work Sans, bundled in assets/fonts/. Colors and text styles live in a shared theme (`lib/core/theme/`), never inline magic values in widgets.
 - Images/illustrations not yet available use Material icons as placeholders,
   isolated in a single widget so they can be replaced later.
 - Follow Effective Dart: snake_case files, UpperCamelCase classes, lowerCamelCase members.
