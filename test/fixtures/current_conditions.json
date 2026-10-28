@@ -1,0 +1,17 @@
+[
+  {
+    "LocalObservationDateTime": "2026-10-26T11:00:00-04:00",
+    "EpochTime": 1793026800,
+    "WeatherText": "Sunny",
+    "WeatherIcon": 1,
+    "HasPrecipitation": false,
+    "PrecipitationType": null,
+    "IsDayTime": true,
+    "Temperature": {
+      "Metric": { "Value": 27.8, "Unit": "C", "UnitType": 17 },
+      "Imperial": { "Value": 82.0, "Unit": "F", "UnitType": 18 }
+    },
+    "MobileLink": "http://www.accuweather.com/en/us/miami-fl/33128/current-weather/347936",
+    "Link": "http://www.accuweather.com/en/us/miami-fl/33128/current-weather/347936"
+  }
+]
