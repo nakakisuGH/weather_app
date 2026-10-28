@@ -130,6 +130,7 @@ flutter analyze
 - **Bottom navigation:** only the Locations tab is functional; Home and Profile show a simple placeholder, since the design does not define those screens.
 - **Null safety:** API fields are parsed defensively with `?.`, `??` and default values. The `!` operator is never used on API data.
 - **No retrying in search** In the city search, retrying is done by editing or clearing the text, to follow the Figma design (no Retry button).
+- **Saved cities list:** it is read from memory and cannot fail, so it has no error state. The weather of each card is the part that handles errors and retries.
 
 ---
 
