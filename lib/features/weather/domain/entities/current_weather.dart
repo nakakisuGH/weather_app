@@ -6,8 +6,8 @@ class CurrentWeather extends Equatable {
   final int weatherIcon;
   final String weatherText;
 
-  /// Observation time in the city's local time (not the device's).
   const CurrentWeather({
+    /// Observation time in the city's local time (not the device's).
     required this.localObservationTime,
     required this.weatherIcon,
     required this.weatherText,
