@@ -1,0 +1,29 @@
+[
+  {
+    "Version": 1,
+    "Key": "347936",
+    "Type": "City",
+    "Rank": 15,
+    "LocalizedName": "Miami",
+    "Country": { "ID": "US", "LocalizedName": "United States" },
+    "AdministrativeArea": { "ID": "FL", "LocalizedName": "Florida" }
+  },
+  {
+    "Version": 1,
+    "Key": "351543",
+    "Type": "City",
+    "Rank": 25,
+    "LocalizedName": "Milwaukee",
+    "Country": { "ID": "US", "LocalizedName": "United States" },
+    "AdministrativeArea": { "ID": "WI", "LocalizedName": "Wisconsin" }
+  },
+  {
+    "Version": 1,
+    "Key": "348794",
+    "Type": "City",
+    "Rank": 25,
+    "LocalizedName": "Minneapolis",
+    "Country": { "ID": "US", "LocalizedName": "United States" },
+    "AdministrativeArea": { "ID": "MN", "LocalizedName": "Minnesota" }
+  }
+]
