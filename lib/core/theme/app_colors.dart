@@ -7,5 +7,7 @@ abstract final class AppColors {
   static const disabled = Color(0xFF999999);       // "Save City" disabled, inactive bar
   static const textPrimary = Color(0xFF1C1C1C);
   static const textSecondary = Color(0xFF5E5D5D);
-  static const border = Color(0xFFBDBDBD);
+  static const border = Color(0xFF79747E);
+  static const divider = Color(0xFF5E5D5D);
+  static const iconDisabled = Color(0xFF5E5D5D);
 }

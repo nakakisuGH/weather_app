@@ -20,11 +20,14 @@ abstract final class AppTheme {
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Colors.white,
           selectedItemColor: AppColors.primary,
-          unselectedItemColor: AppColors.disabled,
+          unselectedItemColor: AppColors.iconDisabled,
           type: BottomNavigationBarType.fixed,
+          elevation: 0,
+          selectedIconTheme: IconThemeData(size: 25),
+          unselectedIconTheme: IconThemeData(size: 25),
         ),
         inputDecorationTheme: const InputDecorationTheme(
           border: OutlineInputBorder(),
         ),
-      );
+      ); 
 }
