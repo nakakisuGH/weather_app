@@ -41,7 +41,7 @@ lib/
         ├── domain/      # Entities, repository contracts and use cases (pure Dart)
         ├── data/        # DTO models (fromJson), remote datasource and repository implementations
         └── presentation/# BLoCs, screens and widgets
-
+```
 
 **Dependency rule:** dependencies point inward (`presentation → domain ← data`). The `domain` layer has no dependencies on Flutter, Dio or any other layer, so the data source can change without touching the UI.
 
@@ -151,9 +151,9 @@ This project was built with the help of **Claude Code** in VS Code.
 ## Possible improvements
 
 - **Persist saved cities** across app restarts with a local datasource (e.g. `shared_preferences`). The `SavedCityRepository` contract would stay the same: only the implementation in `data/` changes.
-- **Delete o modify description of a saved city** from its card.
+- **Delete or modify the description of a saved city** from its card.
 - **Refresh the weather** of all cards with pull-to-refresh.
-- **City with country**, when suggestong the city, also show the country since there are some citis with the same name.
+- **Show the country in city suggestions**, since some cities share the same name.
 ---
 
 ## Git workflow
