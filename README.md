@@ -20,6 +20,7 @@ A Flutter weather app where users save their favorite cities and see the current
 | State management | [flutter_bloc](https://pub.dev/packages/flutter_bloc) |
 | Value equality for states and entities | [equatable](https://pub.dev/packages/equatable) |
 | HTTP client | [dio](https://pub.dev/packages/dio) |
+| SVG images (weather icons) | [flutter_svg](https://pub.dev/packages/flutter_svg) |
 | Mocks for unit tests | [mocktail](https://pub.dev/packages/mocktail) |
 | BLoC testing | [bloc_test](https://pub.dev/packages/bloc_test) |
 
@@ -131,6 +132,8 @@ flutter analyze
 - **Null safety:** API fields are parsed defensively with `?.`, `??` and default values. The `!` operator is never used on API data.
 - **No retrying in search** In the city search, retrying is done by editing or clearing the text, to follow the Figma design (no Retry button).
 - **Saved cities list:** it is read from memory and cannot fail, so it has no error state. The weather of each card is the part that handles errors and retries.
+- **Weather icons:** each card shows the official AccuWeather icon (SVG files in `assets/images/`, named by their icon number, rendered with flutter_svg). A question mark icon is shown when the API sends no icon number or one without an image (AccuWeather does not use 9, 10, 27 and 28).
+- **Time format:** the card shows the observation time as `hh:mm AM/PM` (e.g. "09:05 AM"), or `--:--` when the API does not send a valid time.
 - **City suggestions:** only the city name is shown, as in the design. While a search is active (loading, results, no results or error), its result takes the place of the description field; the typed description is kept.
 
 ---
