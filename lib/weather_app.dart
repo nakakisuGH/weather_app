@@ -6,6 +6,7 @@ import 'package:weather_app/features/weather/domain/usecases/get_saved_cities.da
 import 'package:weather_app/features/weather/domain/usecases/save_city.dart';
 import 'package:weather_app/features/weather/domain/usecases/search_cities.dart';
 import 'package:weather_app/features/weather/presentation/bloc/saved_cities/saved_cities_bloc.dart';
+import 'package:weather_app/features/weather/presentation/screens/home_screen.dart';
 
 /// Root widget. Receives the use cases already built (in `main` or with mocks in tests)
 /// and makes them available to the widgets below.
@@ -40,8 +41,7 @@ class WeatherApp extends StatelessWidget {
           title: 'WeatherForemost',
           debugShowCheckedModeBanner: false,
           theme: AppTheme.light,
-          // Temporary until the Home screen exists.
-          home: const Scaffold(body: Center(child: Text('WeatherForemost'))),
+          home: const HomeScreen(),
         ),
       ),
     );
