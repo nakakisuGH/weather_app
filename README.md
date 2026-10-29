@@ -31,14 +31,17 @@ The project follows **Clean Architecture** with a **feature-first** folder struc
 ```
 lib/
 ├── core/
-│   ├── errors/          # Failure classes shared across features
-│   └── network/         # Dio configuration (base URL, auth header, timeouts)
+│   ├── constants/       # Asset paths (images and weather icons)
+│   ├── errors/          # AppError hierarchy and user-facing messages
+│   ├── network/         # Dio configuration (base URL, auth header, timeouts) and error mapping
+│   ├── theme/           # Colors, text styles and app theme
+│   └── utils/           # Result type and time formatting
 └── features/
     └── weather/
         ├── domain/      # Entities, repository contracts and use cases (pure Dart)
         ├── data/        # DTO models (fromJson), remote datasource and repository implementations
-        └── presentation/# BLoC, screens and widgets
-```
+        └── presentation/# BLoCs, screens and widgets
+
 
 **Dependency rule:** dependencies point inward (`presentation → domain ← data`). The `domain` layer has no dependencies on Flutter, Dio or any other layer, so the data source can change without touching the UI.
 
@@ -105,10 +108,8 @@ flutter test
 
 Tests never call the real AccuWeather API: API responses are simulated with **mocktail** and sample JSON files in `test/fixtures/`.
 
-<!-- TODO: update with the final list of tests -->
-
-- **Unit tests:** models (`fromJson` with complete and missing fields), repositories (success and each failure type) and BLoCs (state sequences).
-- **Widget tests:** loading, success and error states of the main screens.
+- **Unit tests:** models (`fromJson` with complete and missing fields), datasources, repositories (success and each failure type), use cases, the Dio error mapper, `AppError` messages, the time formatter and BLoCs (state sequences, debounce and concurrency).
+- **Widget tests:** Home (loading, empty state, city cards, bottom navigation), the Add City sheet (search states, selection, validation, duplicate city, save and close), the city card (loading, success, Retry) and the weather icons (including a check that every icon number has its SVG file).
 
 Static analysis runs with strict type checks enabled (`strict-casts`, `strict-inference`, `strict-raw-types`):
 
@@ -128,10 +129,10 @@ flutter analyze
 - **Card time:** the time shown on each card (e.g. "11:00 AM") is interpreted as the **local observation time** of the city's current conditions, since the design does not specify it further.
 - **Description is required** before saving a city, matching the enabled/disabled states of the "Save City" button in the design.
 - **Independent card loading:** each city card fetches its own weather, so an error in one city does not affect the others and can be retried individually.
-- **Bottom navigation:** only the Locations tab is functional; Home and Profile show a simple placeholder, since the design does not define those screens.
+- **Bottom navigation:** only the Locations tab is functional; Home and Profile are shown but do nothing when tapped, since the design does not define those screens.
 - **Null safety:** API fields are parsed defensively with `?.`, `??` and default values. The `!` operator is never used on API data.
-- **No retrying in search** In the city search, retrying is done by editing or clearing the text, to follow the Figma design (no Retry button).
-- **Saved cities list:** it is read from memory and cannot fail, so it has no error state. The weather of each card is the part that handles errors and retries.
+- **No retrying in search:** In the city search, retrying is done by editing or clearing the text, to follow the Figma design (no Retry button).
+- **Saved cities list:** it is read from memory and cannot fail, so it has no error state. The weather of each card is the part that handles errors and retries. Cities are kept in memory only, so they are lost when the app is closed (see Roadmap). Reading them cannot fail, so the list has no error state; the weather of each card is the part that handles errors and retries.
 - **Weather icons:** each card shows the official AccuWeather icon (SVG files in `assets/images/`, named by their icon number, rendered with flutter_svg). A question mark icon is shown when the API sends no icon number or one without an image (AccuWeather does not use 9, 10, 27 and 28).
 - **Time format:** the card shows the observation time as `hh:mm AM/PM` (e.g. "09:05 AM"), or `--:--` when the API does not send a valid time.
 - **City suggestions:** only the city name is shown, as in the design. While a search is active (loading, results, no results or error), its result takes the place of the description field; the typed description is kept.
