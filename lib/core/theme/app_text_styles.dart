@@ -22,4 +22,42 @@ abstract final class AppTextStyles {
     color: AppColors.textSecondary,
     height: 1.1,
   );
+
+  /// Floating label of the text fields ("Add City", "Description").
+  static const fieldLabel = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondary,
+  );
+
+  static const fieldText = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textPrimary,
+  );
+
+  static const fieldHint = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.disabled,
+  );
+
+  /// City names in the suggestions list.
+  static const suggestion = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textPrimary,
+  );
+
+  /// Messages shown instead of the suggestions (no results, errors).
+  static const searchMessage = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondary,
+  );
+
+  static const button = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+  );
 }
