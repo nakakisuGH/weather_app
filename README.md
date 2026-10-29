@@ -131,6 +131,7 @@ flutter analyze
 - **Null safety:** API fields are parsed defensively with `?.`, `??` and default values. The `!` operator is never used on API data.
 - **No retrying in search** In the city search, retrying is done by editing or clearing the text, to follow the Figma design (no Retry button).
 - **Saved cities list:** it is read from memory and cannot fail, so it has no error state. The weather of each card is the part that handles errors and retries.
+- **City suggestions:** only the city name is shown, as in the design. While a search is active (loading, results, no results or error), its result takes the place of the description field; the typed description is kept.
 
 ---
 
