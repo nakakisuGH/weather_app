@@ -27,6 +27,16 @@ abstract final class AppTheme {
           selectedIconTheme: IconThemeData(size: 25),
           unselectedIconTheme: IconThemeData(size: 25),
         ),
+        cardTheme: const CardThemeData(
+          color: Colors.white,
+          surfaceTintColor: Colors.transparent,
+          elevation: 0,
+          margin: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+            side: BorderSide(color: AppColors.cardBorder),
+          ),
+        ),
         bottomSheetTheme: const BottomSheetThemeData(
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.transparent,

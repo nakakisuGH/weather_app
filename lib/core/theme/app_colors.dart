@@ -11,4 +11,5 @@ abstract final class AppColors {
   static const divider = Color(0xFF5E5D5D);
   static const iconDisabled = Color(0xFF5E5D5D);
   static const scrim = Color(0x52000000);          // darkened Home behind the "Add City" sheet
+  static const cardBorder = Color(0xFFBDBDBD);     // border of the city cards
 }

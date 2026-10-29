@@ -60,4 +60,23 @@ abstract final class AppTextStyles {
     fontSize: 14,
     fontWeight: FontWeight.w600,
   );
+
+  static const cityName = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textPrimary,
+  );
+
+  static const cityDescription = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textPrimary,
+  );
+
+  /// Observation time and "Retry" inside the weather panel of a card.
+  static const weatherTime = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textPrimary,
+  );
 }
