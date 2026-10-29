@@ -144,12 +144,16 @@ flutter analyze
 This project was built with the help of **Claude Code** in VS Code.
 
 - A [`CLAUDE.md`](CLAUDE.md) file defines the project's architecture, state management, code rules, testing rules and Git conventions, so the assistant follows the same patterns throughout the project.
-- The assistant worked in **manual approval mode**: every proposed change was reviewed before being accepted, and suggestions that broke the project rules were rejected or corrected.
+- **Plan before code:** each feature (BLoCs, Home screen, Add City sheet, city card, weather icons) started with a written plan that I reviewed and approved before any code was written.
+- **Small steps:** one feature at a time, with tests and `flutter analyze` passing before moving on.
+- **Manual approval mode:** every change was reviewed before being accepted. I rejected or corrected suggestions that broke the project rules or that I did not want.
 
-## Roadmap
+## Possible improvements
 
-- [ ] Persist saved cities across app restarts (local datasource with `shared_preferences`), *if time allows*.
-
+- **Persist saved cities** across app restarts with a local datasource (e.g. `shared_preferences`). The `SavedCityRepository` contract would stay the same: only the implementation in `data/` changes.
+- **Delete o modify description of a saved city** from its card.
+- **Refresh the weather** of all cards with pull-to-refresh.
+- **City with country**, when suggestong the city, also show the country since there are some citis with the same name.
 ---
 
 ## Git workflow
