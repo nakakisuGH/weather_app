@@ -4,6 +4,7 @@ import 'package:weather_app/features/weather/presentation/bloc/saved_cities/save
 import 'package:weather_app/features/weather/presentation/widgets/add_city_sheet.dart';
 import 'package:weather_app/features/weather/presentation/widgets/app_bottom_nav_bar.dart';
 import 'package:weather_app/features/weather/presentation/widgets/empty_cities_view.dart';
+import 'package:weather_app/features/weather/presentation/widgets/saved_cities_list.dart';
 import 'package:weather_app/features/weather/presentation/widgets/weather_app_top_bar.dart';
 
 /// Home screen: the list of saved cities, or the empty state when there are none.
@@ -20,11 +21,8 @@ class HomeScreen extends StatelessWidget {
             const Center(child: CircularProgressIndicator()),
           SavedCitiesSuccess(:final savedCities) when savedCities.isEmpty =>
             const EmptyCitiesView(),
-          SavedCitiesSuccess(:final savedCities) => ListView.builder(
-              itemCount: savedCities.length,
-              itemBuilder: (context, index) =>
-                  ListTile(title: Text(savedCities[index].city.name)),
-            ),
+          SavedCitiesSuccess(:final savedCities) =>
+            SavedCitiesList(savedCities: savedCities),
         },
       ),
       floatingActionButton: Padding(
