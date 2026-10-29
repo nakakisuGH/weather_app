@@ -38,6 +38,7 @@ dependencies:
   equatable: ^3.0.0
   dio: ^5.11.1
   bloc_concurrency: ^0.3.0
+  flutter_svg: ^2.3.2
 
 dev_dependencies:
   flutter_test:
