@@ -19,15 +19,28 @@ class CitySearchBloc extends Bloc<CitySearchEvent, CitySearchState> {
     required this._searchCities,
     this._debounceDuration = const Duration(milliseconds: 400),
   }) : super(const CitySearchInitial()) {
-    on<CitySearchQueryChanged>(_onQueryChanged, transformer: restartable());
-    on<CitySearchCleared>((_, emit) => emit(const CitySearchInitial()));
+    // Both events share one restartable() handler, so a clear also cancels
+    // a search that is still waiting for the debounce.
+    on<CitySearchEvent>(_onEvent, transformer: restartable());
+  }
+
+  Future<void> _onEvent(
+    CitySearchEvent event,
+    Emitter<CitySearchState> emit,
+  ) async {
+    switch (event) {
+      case CitySearchQueryChanged(:final query):
+        await _onQueryChanged(query, emit);
+      case CitySearchCleared():
+        emit(const CitySearchInitial());
+    }
   }
 
   Future<void> _onQueryChanged(
-    CitySearchQueryChanged event,
+    String rawQuery,
     Emitter<CitySearchState> emit,
   ) async {
-    final query = event.query.trim();
+    final query = rawQuery.trim();
     if (query.length < SearchCities.minQueryLength) {
       emit(const CitySearchInitial());
       return;

@@ -145,5 +145,18 @@ void main() {
       act: (bloc) => bloc.add(const CitySearchCleared()),
       expect: () => const [CitySearchInitial()],
     );
+
+    blocTest<CitySearchBloc, CitySearchState>(
+      'cancels a search that is still waiting for the debounce',
+      build: () =>
+          buildBloc(debounceDuration: const Duration(milliseconds: 100)),
+      act: (bloc) => bloc
+        ..add(const CitySearchQueryChanged('Mia'))
+        ..add(const CitySearchCleared()),
+      wait: const Duration(milliseconds: 300),
+      // Only the clear's Initial: no Loading, because the search never runs.
+      expect: () => const [CitySearchInitial()],
+      verify: (_) => verifyNever(() => searchCities(any())),
+    );
   });
 }
